@@ -1,0 +1,20 @@
+
+module full_subractor_tb;
+reg a,b,bin;
+wire D,bout;
+full_subractor fs(a,b,bin,D,bout);
+initial begin
+$monitor("At time%0t:a=%b,b=%b,bin=%b,difference=%b,borrow=%b",$time,a,b,bin,D,bout);
+$dumpvars;
+a=0;b=0;#1
+a=0;b=0;#1
+a=0;b=1;#1
+a=0;b=1;#1
+a=1;b=0;#1
+a=1;b=0;#1
+a=1;b=1;#1
+a=1;b=1;
+
+end
+endmodule
+~           
