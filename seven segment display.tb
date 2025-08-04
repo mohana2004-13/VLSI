@@ -1,0 +1,26 @@
+
+
+module tb_seven_segment_decoder;
+
+reg [3:0] binary_in;
+wire [6:0] seg_out;
+
+seven_segment_decoder uut (
+    .binary_in(binary_in),
+    .seg_out(seg_out)
+);
+
+initial begin
+    $display("Time\tbinary_in\tseg_out");
+    $monitor("%0dns\t%b\t\t%b", $time, binary_in, seg_out);
+
+    // Test all hexadecimal digits 0-F
+    for (integer i = 0; i < 16; i = i + 1) begin
+        binary_in = i;
+        #10; // wait 10 ns
+    end
+
+    $finish;
+end
+
+endmodule
